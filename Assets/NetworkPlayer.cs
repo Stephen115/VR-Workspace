@@ -19,7 +19,7 @@ public class NetworkPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        photonView = GetComponent<PhotonView>();
+        Invoke("AssignBones", 2);
 
         XRRig rig = FindObjectOfType<XRRig>();
         headRig = rig.transform.Find("Camera Offset/Main Camera");
@@ -31,7 +31,7 @@ public class NetworkPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
+        if (photonView != null && photonView.IsMine)
         {
             rightHand.gameObject.SetActive(false);
             leftHand.gameObject.SetActive(false);
@@ -47,5 +47,18 @@ public class NetworkPlayer : MonoBehaviour
     {
         target.position = rigTransform.position;
         target.rotation = rigTransform.rotation;
+    }
+
+    void AssignBones()
+    {
+        //Invoke("AssignBones", 2);
+        head = GameObject.Find("HeadPosition").transform;
+        leftHand = GameObject.Find("LeftHandPos").transform;
+        rightHand = GameObject.Find("RightHandPos").transform;
+
+        leftHand.transform.Rotate(0, 90, 0);
+        rightHand.transform.Rotate(0, 90, 0);
+
+        photonView = GetComponent<PhotonView>();
     }
 }
