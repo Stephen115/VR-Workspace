@@ -41,4 +41,9 @@ public class HandPresence : MonoBehaviour
         if (primary2DAxisValue != Vector2.zero)
             Debug.Log("Primary Touchpad " + primary2DAxisValue);
     }
+
+    public void IsPressed() 
+    {
+        Debug.Log("Is Pressed");
+    }
 }
