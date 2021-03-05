@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    public string roomID;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         roomOptions.IsVisible = true;
         roomOptions.IsOpen = true;
 
-        PhotonNetwork.JoinOrCreateRoom("Room 1", roomOptions, TypedLobby.Default);
+        roomID = DataStore.DS.roomNumber;
+        Debug.Log(roomID);
+        PhotonNetwork.JoinOrCreateRoom(roomID, roomOptions, TypedLobby.Default);
     }
 
     public override void OnJoinedRoom() 
