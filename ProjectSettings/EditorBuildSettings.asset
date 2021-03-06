@@ -6,8 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Multiplayer-Test.unity
-    guid: 8939781f814750b4e94d7eec5d31b06b
+    path: Assets/Scenes/MainMenu.unity
+    guid: 802fdb853794edb46953a9cec76d50eb
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: a8f8d5a2c6d5e8c45b126c3f837aaa00, type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 0ad35eed370815c4facca20df69e2419, type: 2}
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: ef78e41ad28c832468a703b20fd29521, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 97de38e22918fbf4cab699b1c0cc392e, type: 2}
