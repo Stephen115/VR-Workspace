@@ -15,7 +15,7 @@ MonoBehaviour:
   AppSettings:
     AppIdRealtime: b3e795db-951c-4eed-84c3-9bfcfc7e9fad
     AppIdChat: 
-    AppIdVoice: 
+    AppIdVoice: 964c6c48-7fe9-426e-bbeb-8c159933d26f
     AppVersion: 
     UseNameServer: 1
     FixedRegion: 
