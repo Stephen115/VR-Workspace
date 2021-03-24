@@ -52,9 +52,9 @@ public class NetworkPlayer : MonoBehaviour
     void AssignBones()
     {
         //Invoke("AssignBones", 2);
-        head = GameObject.Find("HeadPosition").transform;
-        leftHand = GameObject.Find("LeftHandPos").transform;
-        rightHand = GameObject.Find("RightHandPos").transform;
+        head = GameObject.Find("Neck").transform;
+        leftHand = GameObject.Find("LeftHand").transform;
+        rightHand = GameObject.Find("RightHand").transform;
 
         leftHand.transform.Rotate(0, 90, 0);
         rightHand.transform.Rotate(0, 90, 0);

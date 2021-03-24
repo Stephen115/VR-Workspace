@@ -6,7 +6,7 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
-    public string roomID;
+    public static string roomID;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,14 +16,24 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void ConnectToServer()
     {
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
+        PhotonNetwork.GameVersion = MasterManager.GameSettings.GameVersion;
         PhotonNetwork.ConnectUsingSettings();
         Debug.Log("Try Connect To Server...");
     }
 
     public override void OnConnectedToMaster()
     {
+        if (!PhotonNetwork.InLobby)
+            PhotonNetwork.JoinLobby();
+
         Debug.Log("Connected to server.");
         base.OnConnectedToMaster();
+    }
+
+    public static void JoinARoom() 
+    {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 10;
         roomOptions.IsVisible = true;
