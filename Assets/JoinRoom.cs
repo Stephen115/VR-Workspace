@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,7 +22,9 @@ public class JoinRoom : MonoBehaviour
             information.username = nameField.text;
             information.roomNumber = roomField.text;
             Debug.Log("YAY");
-            SceneManager.LoadScene(sceneName);
+            NetworkManager.JoinARoom();
+            PhotonNetwork.LoadLevel(1);
+            //SceneManager.LoadScene(sceneName);
         }
         else 
         {
