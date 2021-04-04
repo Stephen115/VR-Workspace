@@ -6,6 +6,11 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+	
+    private GameObject desktop;
+    private GameObject screenPositioner;
+    private GameObject spawnedPlayerPrefab;
+	
     public static string roomID;
     // Start is called before the first frame update
     void Start()
@@ -48,6 +53,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("Joined a Room.");
         base.OnJoinedRoom();
+		
+        spawnedPlayerPrefab = PhotonNetwork.Instantiate("Girl4", transform.position, transform.rotation); 
+        desktop = PhotonNetwork.Instantiate("VR Desktop Mirror", new Vector3(0, 0, 0), Quaternion.identity, 0);
+        screenPositioner = PhotonNetwork.Instantiate("ScreenPositioner (1)", new Vector3(0, 0, 0), Quaternion.identity, 0);
+		
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer) 

@@ -13,7 +13,7 @@ public class HandPresence : MonoBehaviour
         List<InputDevice> devices = new List<InputDevice>();
         InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
         InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
-
+        /*
         foreach (var item in devices) 
         {
             Debug.Log(item.name + item.characteristics);
@@ -23,23 +23,23 @@ public class HandPresence : MonoBehaviour
         {
             targetDevice = devices[0];
         }
-
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
         targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue);
-        if (primaryButtonValue)
-            Debug.Log("Pressing Primary Button");
+        //if (primaryButtonValue)
+            //Debug.Log("Pressing Primary Button");
 
         targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue);
-        if (triggerValue > 0.1f)
-            Debug.Log("Trigger pressed" + triggerValue);
+        //if (triggerValue > 0.1f)
+            //Debug.Log("Trigger pressed" + triggerValue);
 
         targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 primary2DAxisValue);
-        if (primary2DAxisValue != Vector2.zero)
-            Debug.Log("Primary Touchpad " + primary2DAxisValue);
+        //if (primary2DAxisValue != Vector2.zero)
+            //Debug.Log("Primary Touchpad " + primary2DAxisValue);
     }
 
     public void IsPressed() 

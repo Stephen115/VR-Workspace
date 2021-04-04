@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,9 +31,10 @@ public class Whiteboard : MonoBehaviour
 
         if (touchingLast) 
         {
+
             texture.SetPixels(x, y, penSize, penSize, color);
 
-            for (float t = 0.01f; t < 1.00f; t += 0.01f) 
+            for (float t = 0.01f; t < 1.00f; t += 0.01f)
             {
                 int lerpX = (int)Mathf.Lerp(lastX, (float)x, t);
                 int lerpY = (int)Mathf.Lerp(lastY, (float)y, t);
@@ -40,6 +42,11 @@ public class Whiteboard : MonoBehaviour
             }
 
             texture.Apply();
+
+            //penDraw(x, y);
+
+            //PhotonView photonView = PhotonView.Get(this);
+            //photonView.RPC("penDraw", RpcTarget.All, x, y);
         }
 
         this.lastX = (float)x;
@@ -64,4 +71,18 @@ public class Whiteboard : MonoBehaviour
     {
         this.color = Enumerable.Repeat<Color>(color, penSize * penSize).ToArray<Color>();
     }
+    /*[PunRPC]
+    public void penDraw(int x, int y)
+    {
+        texture.SetPixels(x, y, penSize, penSize, color);
+
+        for (float t = 0.01f; t < 1.00f; t += 0.01f)
+        {
+            int lerpX = (int)Mathf.Lerp(lastX, (float)x, t);
+            int lerpY = (int)Mathf.Lerp(lastY, (float)y, t);
+            texture.SetPixels(lerpX, lerpY, penSize, penSize, color);
+        }
+
+        texture.Apply();
+    }*/
 }

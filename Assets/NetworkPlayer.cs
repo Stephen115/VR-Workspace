@@ -53,11 +53,11 @@ public class NetworkPlayer : MonoBehaviour
     {
         //Invoke("AssignBones", 2);
         head = GameObject.Find("Neck").transform;
-        leftHand = GameObject.Find("LeftHand").transform;
-        rightHand = GameObject.Find("RightHand").transform;
+        leftHand = GameObject.Find("LH").transform;
+        rightHand = GameObject.Find("RH").transform;
 
-        leftHand.transform.Rotate(0, 90, 0);
-        rightHand.transform.Rotate(0, 90, 0);
+        //leftHand.transform.Rotate(0, 90, 0);
+        //rightHand.transform.Rotate(0, 90, 0);
 
         photonView = GetComponent<PhotonView>();
     }

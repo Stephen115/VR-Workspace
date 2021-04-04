@@ -19,9 +19,10 @@ public class JoinRoom : MonoBehaviour
         sceneName = "SampleScene";
         if (nameField.text.Length > 0 && roomField.text.Length > 0)
         {
-            information.username = nameField.text;
+            //information.username = nameField.text;
             information.roomNumber = roomField.text;
-            Debug.Log("YAY");
+            PhotonNetwork.NickName = nameField.text;
+            //Debug.Log("YAY");
             NetworkManager.JoinARoom();
             PhotonNetwork.LoadLevel(1);
             //SceneManager.LoadScene(sceneName);
