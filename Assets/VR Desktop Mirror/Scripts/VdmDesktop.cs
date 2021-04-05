@@ -13,7 +13,7 @@ public class VdmDesktop : MonoBehaviour
     public int Screen = 0;
     [HideInInspector]
     public int ScreenIndex = 0;
-
+    public Texture2D textureToSend;
     [DllImport("user32.dll")]
     static extern void mouse_event(int dwFlags, int dx, int dy,
                       int dwData, int dwExtraInfo);
@@ -455,18 +455,18 @@ public class VdmDesktop : MonoBehaviour
             GetComponent<Renderer>().material.mainTexture = tex;
             GetComponent<Renderer>().material.mainTexture.filterMode = m_manager.TextureFilterMode;
             GetComponent<Renderer>().material.SetTextureScale("_MainTex", new Vector2(1, -1));
-
+            textureToSend = tex;
             float sx = width;
             float sy = height;
             sx = sx * m_manager.ScreenScaleFactor;
             sy = sy * m_manager.ScreenScaleFactor;
             transform.localScale = new Vector3(sx, sy, 1);
             var bytes = tex.EncodeToPNG();
-            photonView.RPC("SendTexture", RpcTarget.Others, bytes, width, height);
+            //photonView.RPC("SendTexture", RpcTarget.Others, bytes, width, height);
 
     }
 
-    [PunRPC]
+    /*[PunRPC]
     public void SendTexture(Byte[] texture, int width, int height)
     {
         recievedTexture.LoadImage(texture);
@@ -479,6 +479,6 @@ public class VdmDesktop : MonoBehaviour
         sx = sx * m_manager.ScreenScaleFactor;
         sy = sy * m_manager.ScreenScaleFactor;
         transform.localScale = new Vector3(sx, sy, 1);
-    }
+    }*/
 
 }

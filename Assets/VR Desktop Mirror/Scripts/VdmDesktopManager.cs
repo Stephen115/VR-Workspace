@@ -11,6 +11,8 @@ public class VdmDesktopManager : MonoBehaviour {
 
     //private GameObject monitor;
     public static VdmDesktopManager Instance;
+    public GameObject masterMonitor;
+    public GameObject clientMonitor;
 
     public static bool ActionInThisFrame = false;
     
@@ -223,25 +225,33 @@ public class VdmDesktopManager : MonoBehaviour {
 
         ReInit();
 
-        GameObject monitorBase = transform.GetChild(0).gameObject;
-        monitorBase.SetActive(false);
+        //GameObject monitorBase = transform.GetChild(0).gameObject;
+        //monitorBase.SetActive(false);
 
         int nScreen = DesktopCapturePlugin_GetNDesks();
         int iScreenIndex = 0;
         for (int s = 0; s < nScreen; s++)
         {
             //Invoke("Initialise", 2f);
-
+            GameObject monitor;
             //GameObject monitor = GameObject.Instantiate(monitorBase);
-            GameObject monitor = PhotonNetwork.Instantiate("Monitor", new Vector3(0, 0, 0), Quaternion.identity, 0);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                //monitor = Instantiate(masterMonitor, new Vector3(0, 0, 0), Quaternion.identity);
+                monitor = PhotonNetwork.Instantiate("Monitor", new Vector3(0, 0, 0), Quaternion.identity, 0); 
+            } else
+            {
+                //monitor = Instantiate(clientMonitor, new Vector3(0, 0, 0), Quaternion.identity);
+                monitor = PhotonNetwork.Instantiate("SharingWhiteboard", new Vector3(0, 0, 0), Quaternion.identity, 0);
+            }
 
             if ((MultiMonitorScreen != 0) && (MultiMonitorScreen != (s + 1)))
                 continue;
 
             monitor.name = "Monitor " + (s + 1).ToString();
             //monitor.Allocate = s;
-            monitor.AddComponent<PhotonView>();
-            monitor.AddComponent<PhotonTransformView>();
+            //monitor.AddComponent<PhotonView>();
+            //monitor.AddComponent<PhotonTransformView>();
             VdmDesktop desk = monitor.AddComponent<VdmDesktop>();
             desk.Screen = s;
             desk.ScreenIndex = iScreenIndex;

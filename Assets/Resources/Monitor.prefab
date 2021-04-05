@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 459083326096589270}
   - component: {fileID: -1421694014250599795}
   - component: {fileID: -5399738864011620105}
+  - component: {fileID: -3370673539732057826}
   m_Layer: 0
   m_Name: Monitor
   m_TagString: Untagged
@@ -245,3 +246,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
+--- !u!114 &-3370673539732057826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459083326108423458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 199262c57105232498c7b5ecdf8dd0e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messagePerSecond: 100
