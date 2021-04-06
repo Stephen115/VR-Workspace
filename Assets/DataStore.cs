@@ -6,6 +6,7 @@ public class DataStore : MonoBehaviour
 {
     public string username;
     public string roomNumber;
+    public int characterID;
 
     public static DataStore DS;
  
