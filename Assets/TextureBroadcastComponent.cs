@@ -31,7 +31,7 @@ namespace TextureSharing
             texture = (Texture2D)GetComponent<Renderer>().material.mainTexture;
             try
             {
-                texture.GetPixels32();
+
             }
             catch(UnityException e)
             {

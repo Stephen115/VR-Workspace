@@ -69,7 +69,7 @@ public class WhiteboardPen : MonoBehaviour
             if (!lastTouch)
             {
                 lastTouch = true;
-                lastAngle = transform.rotation;
+                //lastAngle = transform.rotation;
             }
         }
         else 
